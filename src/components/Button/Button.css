@@ -1,0 +1,20 @@
+.button {
+    margin: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    background-color: green;
+    color: white;
+}
+
+.btn-reset {
+    background-color: red;
+    color: yellow;
+}
+
+.button:hover {
+    box-shadow: 2px 4px 2px grey;
+}
