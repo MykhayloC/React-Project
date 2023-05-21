@@ -1,13 +1,22 @@
+import {useState} from "react";
 import Button from "./components/Button/Button.jsx";
 import Header from "./components/Header/Header.jsx";
+import Counter from "./components/Counter/Counter.jsx";
 
 function App() {
+
+    const [value, setValue] = useState(0);
+
+    const handleIncrement = () => setValue(value + 1);
+    const handleDecrement = () => setValue(value - 1);
+
     return (
         <div>
-            <Header text={"Couple of useless buttons"}></Header>
+            <Header>Counter</Header>
+            <Counter>{value}</Counter>
             <div className={"buttons"}>
-                <Button text={"SUBMIT"} myClass={"button btn-submit"}></Button>
-                <Button text={"RESET"} myClass={"button btn-reset"}></Button>
+                <Button myClass={"button btn-submit"} onClick = {handleIncrement}>To increase value</Button>
+                <Button myClass={"button btn-reset"}  onClick = {handleDecrement}>To decrease value</Button>
             </div>
         </div>
     );
