@@ -1,0 +1,13 @@
+.todo {
+    margin: 5px;
+    padding: 5px;
+    border-bottom: 2px solid red;
+}
+
+.todo-header {
+    text-decoration: underline;
+}
+
+.todo-body {
+    font-style: italic;
+}
