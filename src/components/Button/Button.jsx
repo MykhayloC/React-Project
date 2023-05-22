@@ -1,9 +1,9 @@
 import './Button.css';
 
 const Button = (props) => {
-
+    const {myClass, onClick} = props;
     return (
-        <button className={props.myClass} onClick={props.onClick}>{props.children}</button>
+        <button className={myClass} onClick={onClick}>{props.children}</button>
     );
 };
 
