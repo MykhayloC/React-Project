@@ -1,9 +1,8 @@
 body {
     background-color: aquamarine;
 }
-
-.container {
-    width: 50%;
+li {
+    list-style-type: none;
 }
 
 .error-header {
