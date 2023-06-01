@@ -1,51 +1,26 @@
-import {useState} from "react";
-import Button from "./components/Button/Button.jsx";
-import Header from "./components/Header/Header.jsx";
-import Posts from "./components/Posts/Posts.jsx";
-import Todos from "./components/Todos/Todos.jsx";
-import Users from "./components/Users/Users.jsx";
-
-
+import {Routes, Route} from 'react-router-dom'
+import Home from "./pages/Home/Home.jsx";
+import Users from "./pages/Users/Users.jsx";
+import Posts from "./pages/Posts/Posts.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import User from "./pages/User/User.jsx";
+import Post from "./pages/Post/Post.jsx";
+import Layout from "./components/Layout.jsx";
 
 function App() {
-    const [posts, showPosts] = useState(false);
-    const [postsValue, changePostsValue] = useState("Show");
-    const [todos, showTodos] = useState(false);
-    const [todosValue, changeTodosValue] = useState("Show");
-    const [users, showUsers] = useState(false);
-    const [usersValue, changeUsersValue] = useState("Show");
-
-    const toggleButtonValue = (buttonValue, changeButtonValue) => {
-        buttonValue === "Show" ? changeButtonValue("Hide") : changeButtonValue("Show");
-    }
-    const handlePostsButton = () => {
-      toggleButtonValue(postsValue, changePostsValue);
-      showPosts(!posts);
-    };
-    const handleTodosButton = () => {
-      toggleButtonValue(todosValue, changeTodosValue);
-      showTodos(!todos);
-    };
-    const handleUsersButton = () => {
-      toggleButtonValue(usersValue, changeUsersValue);
-      showUsers(!users);
-    }
-
 
     return (
         <div>
-            <Header>Render data from API</Header>
-
-            <div className={"buttons"}>
-                <Button myClass={"button"} onClick={handlePostsButton}>{postsValue} posts</Button>
-                <Button myClass={"button"} onClick={handleTodosButton}>{todosValue} todos</Button>
-                <Button myClass={"button"} onClick={handleUsersButton}>{usersValue} users</Button>
-            </div>
-            <div className={"container"}>
-                {posts && <Posts/>}
-                {todos && <Todos/>}
-                {users && <Users/>}
-            </div>
+            <Routes>
+                <Route path='/' element={<Layout/>}>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/users' element={<Users/>}/>
+                    <Route path='/users/:userId' element={<User/>}/>
+                    <Route path='/posts' element={<Posts/>}/>
+                    <Route path='/posts/:postId' element={<Post/>}/>
+                </Route>
+                <Route path='*' element={<NotFound/>}/>
+            </Routes>
         </div>
     );
 }
