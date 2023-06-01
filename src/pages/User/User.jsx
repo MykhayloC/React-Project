@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
-import './User.css'
 
 const User = () => {
     const [user, setUser] = useState({});
@@ -21,9 +20,6 @@ const User = () => {
             } catch (e) {
                 setError(e.message);
             }
-
-
-
         }
         fetchUser();
     }, [userId])
@@ -32,17 +28,17 @@ const User = () => {
         <div>
             {error &&
                 <div>
-                    <h2 className={"error-header"}>Oops!..</h2>
-                    <p className={"error-message"}>{error}!</p>
+                    <h2 className="error-header">Oops!..</h2>
+                    <p className="error-message">{error}!</p>
                 </div>
             }
             {user &&
-                <div className={"user"} key={user.id}>
-                    <h6 className={"user-header"} >Name: {user.name}</h6>
-                    <p className={"user-body"}>Email: {user.email}</p>
-                    <p className={"user-body"}>Phone-number: {user.phone}</p>
-                    <p className={"user-body"}>City: {user.address?.city}</p>
-                    <p className={"user-body"}>Company: {user.company?.name}</p>
+                <div className="user" key={user.id}>
+                    <h6 className="user-header" >Name: {user.name}</h6>
+                    <p className="user-body">Email: {user.email}</p>
+                    <p className="user-body">Phone-number: {user.phone}</p>
+                    <p className="user-body">City: {user.address?.city}</p>
+                    <p className="user-body">Company: {user.company?.name}</p>
                 </div>
             }
         </div>

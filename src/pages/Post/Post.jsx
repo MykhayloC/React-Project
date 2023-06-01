@@ -1,27 +1,28 @@
 import {useEffect, useState} from "react";
-import {Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
-const Posts = () => {
-    const [posts, setPosts] = useState([]);
+const Post = () => {
+    const [post, setPost] = useState({});
     const [error, setError] = useState('');
+    const {postId} = useParams();
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchPost = async () => {
             try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+                const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 
                 if (!response.ok) {
                     throw new Error('HTTP-request error!')
                 }
 
                 const data = await response.json();
-                setPosts(data);
+                setPost(data);
             } catch (e) {
                 setError(e.message);
             }
         }
-        fetchPosts();
-    }, [])
+        fetchPost();
+    }, [postId])
 
     return (
         <div>
@@ -31,15 +32,14 @@ const Posts = () => {
                     <p className="error-message">{error}!</p>
                 </div>
             }
-            <div className="content-box">
-            {posts && posts.map(post =>
+            {post &&
                 <div className="post" key={post.id}>
-                    <Link to={`/posts/${post.id}`} className="post-header" >{post.title}</Link>
+                    <h6 className="post-header" >{post.title}</h6>
+                    <p className="post-body">{post.body}</p>
                 </div>
-            )}
-            </div>
+            }
         </div>
     );
 }
 
-export default Posts;
+export default Post;

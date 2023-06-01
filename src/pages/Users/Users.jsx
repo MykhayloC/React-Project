@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
-import './Users.css'
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -25,22 +24,23 @@ const Users = () => {
     }, [])
 
     return (
-        <div>
-            <h2>Users</h2>
-            {error &&
-                <div>
-                    <h2 className={"error-header"}>Oops!..</h2>
-                    <p className={"error-message"}>{error}!</p>
-                </div>
-            }
-            {users && users.map(user =>
-                <div className={"user"} key={user.id}>
-                    <Link to={`/users/${user.id}`} className={"user-header"} >Name: {user.name}</Link>
-                    <p className={"user-body"}>Email: {user.email}</p>
-                    <p className={"user-body"}>Company: {user.company.name}</p>
-                </div>
-            )}
-        </div>
+        <>
+            <div>
+                {error &&
+                    <div>
+                        <h2 className="error-header">Oops!..</h2>
+                        <p className="error-message">{error}!</p>
+                    </div>
+                }
+                {users && users.map(user =>
+                    <div className="user" key={user.id}>
+                        <Link to={`/users/${user.id}`} className="user-header">Name: {user.name}</Link>
+                        <p className="user-body">Email: {user.email}</p>
+                        <p className="user-body">Company: {user.company.name}</p>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }
 
