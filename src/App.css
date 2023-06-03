@@ -1,0 +1,60 @@
+.app {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -100%);
+}
+
+.input-field {
+    max-width: 70px;
+    text-align: center;
+}
+
+.counter-value {
+    padding: 3px 5px 3px 5px;
+    font-size: x-large;
+    font-family: Arial;
+    font-weight: bold;
+    border: 2px solid darkblue;
+}
+
+.btn {
+    margin: 4px;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    box-shadow: 3px -3px 3px lightslategrey;
+    font-style: italic;
+}
+
+.increment-btn {
+    background-color: darkolivegreen;
+    color: greenyellow;
+}
+
+.increment-btn:hover {
+    background-color: greenyellow;
+    color: darkolivegreen;
+}
+
+.decrement-btn {
+    background-color: yellow;
+    color: black;
+}
+
+.decrement-btn:hover {
+    background-color: darkgrey;
+    color: green;
+}
+
+.reset-btn {
+    background-color: red;
+    color: yellow;
+}
+
+.reset-btn:hover {
+    background-color: yellow;
+    color: red;
+}
